@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import Banner from "./components/Banner";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import "./common.css";
+import Card from "./components/Card";
+import Button from "./components/Button";
+import blogData from "./Data";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Banner />
+      <div className="home_box px-5 lg:px-60 gap-4 ">
+        {blogData.map((data) => (
+          <Card
+            key={data.id}
+            title={data.title}
+            author={data.author}
+            views={data.views}
+            comments={data.comments}
+          />
+        ))}
+      </div>
+      <Button />
+      <Footer />
+    </>
   );
 }
 
